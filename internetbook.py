@@ -1,22 +1,21 @@
 # -*- coding: cp949 -*-
-import urllib
-from xmlPI import *
+from xmlbook import *
 from http.client import HTTPConnection
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 ##global
 conn = None
 #regKey = '73ee2bc65b*******8b927fc6cd79a97'
-regKey = '9vQCR1%2BIjnzqp1rwma%2F02jUKf1wi8Lc0ouFo8P9EW5W0M8fCKQJm8jh%2FbyzDZP6tV1gKMzCTtcGkKJFdUK%2BpJA%3D%3D'
+
 # 네이버 OpenAPI 접속 정보 information
-server = "www.culture.go.kr"
+server = "openapi.naver.com"
 
 # smtp 정보
 host = "smtp.gmail.com" # Gmail SMTP 서버 주소.
 port = "587"
 
 def userURIBuilder(server,**user):
-    str = "http://" + server + "/openapi/rest/publicperformancedisplays/period" + "?"
+    str = "http://" + server + "/search" + "?"
     for key in user.keys():
         str += key + "=" + user[key] + "&"
     return str
@@ -25,16 +24,17 @@ def connectOpenAPIServer():
     global conn, server
     conn = HTTPConnection(server)
         
-def getBookDataFromISBN(From,To):
+def getBookDataFromISBN(isbn):
     global server, regKey, conn
     if conn == None :
         connectOpenAPIServer()
-    uri = userURIBuilder(server, ServiceKey=regKey,to = To, rows="20",startPage="1")
+    uri = userURIBuilder(server, key=regKey, query='%20', display="1", start="1", target="book_adv", d_isbn=isbn)
     conn.request("GET", uri)
+    
     req = conn.getresponse()
     print (req.status)
     if int(req.status) == 200 :
-        print("PI data downloading complete!")
+        print("Book data downloading complete!")
         return extractBookData(req.read())
     else:
         print ("OpenAPI request has been failed!! please retry")
@@ -43,18 +43,16 @@ def getBookDataFromISBN(From,To):
 def extractBookData(strXml):
     from xml.etree import ElementTree
     tree = ElementTree.fromstring(strXml)
-    #cLen = strxml.getheader("Content-Length")
-    print(strXml.decode("utf-8"))
-    #print (strXml)
+    print (strXml)
     # Book 엘리먼트를 가져옵니다.
-    itemElements = tree.getiterator("perforList")  # return list type
+    itemElements = tree.getiterator("item")  # return list type
     print(itemElements)
     for item in itemElements:
-        seq = item.find("seq")
+        isbn = item.find("isbn")
         strTitle = item.find("title")
         print (strTitle)
         if len(strTitle.text) > 0 :
-           return {"seq":seq.text, "title":strTitle.text}
+           return {"ISBN":isbn.text,"title":strTitle.text}
 
 def sendMain():
     global host, port

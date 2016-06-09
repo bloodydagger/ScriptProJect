@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="EUC-KR" standalone="yes"?>
+<response>
+    <comMsgHeader>
+        <RequestMsgID/>
+        <ResponseTime>2016-06-09 03:58:57.5857</ResponseTime>
+        <ResponseMsgID/>
+        <SuccessYN>Y</SuccessYN>
+        <ReturnCode>00</ReturnCode>
+        <ErrMsg>NORMAL SERVICE.</ErrMsg>
+    </comMsgHeader>
+    <msgBody>
+        <totalCount>263</totalCount>
+        <cPage>5</cPage>
+        <rows>10</rows>
+        <from>20160501</from>
+        <to>20160602</to>
+        <place/>
+        <gpsxfrom/>
+        <gpsyfrom/>
+        <gpsxto/>
+        <gpsyto/>
+        <keyword/>
+        <sortStdr>1</sortStdr>
+        <perforList>
+            <seq>106730</seq>
+            <title>가온: 세상의 시작(5월)</title>
+            <startDate>20160501</startDate>
+            <endDate>20160531</endDate>
+            <place>정동극장</place>
+            <realmName>무용</realmName>
+            <area>서울</area>
+            <thumbnail>http://www.jeongdong.or.kr/upfiles/play/201603/uploadData_20160304_3.jpg</thumbnail>
+            <gpsX>126.97284421986274</gpsX>
+            <gpsY>37.56593518651228</gpsY>
+        </perforList>
+        <perforList>
+            <seq>105770</seq>
+            <title>안드레아 보첼리 'Cinema' World Tour 2016 Concert in Seoul</title>
+            <startDate>20160501</startDate>
+            <endDate>20160501</endDate>
+            <place>올림픽공원 체조경기장</place>
+            <realmName>콘서트</realmName>
+            <area>서울</area>
+            <thumbnail>http://www.culture.go.kr/upload/rdf/rdf_2016021516114480418.jpg</thumbnail>
+            <gpsX>127.126046955566</gpsX>
+            <gpsY>37.5170212134621</gpsY>
+        </perforList>
+        <perforList>
+            <seq>106942</seq>
+            <title>2016드림갤러리기획전시 `남미현대미술특별전`</title>
+            <startDate>20160501</startDate>
+            <endDate>20160720</endDate>
+            <place>북서울 꿈의숲아트센터</place>
+            <realmName>미술</realmName>
+            <area>서울</area>
+            <thumbnail>http://www.sejongpac.or.kr/upload/PERFORM1/160501_dfac_d155.jpg</thumbnail>
+            <gpsX>127.04111175739726</gpsX>
+            <gpsY>37.61989019260818</gpsY>
+        </perforList>
+        <perforList>
+            <seq>106658</seq>
+            <title>가족뮤지컬 &lt;구름빵 시즌3&gt;</title>
+            <startDate>20160501</startDate>
+            <endDate>20160501</endDate>
+            <place>부평아트센터</place>
+            <realmName>연극</realmName>
+            <area>인천</area>
+            <thumbnail>http://www.bpcf.or.kr/UpFiles/performance/포스터(240).jpg</thumbnail>
+            <gpsX>126.70490582668546</gpsX>
+            <gpsY>37.482339661070206</gpsY>
+        </perforList>
+        <perforList>
+            <seq>107083</seq>
+            <title>연극 킬 미 나우</title>
+            <startDate>20160501</startDate>
+            <endDate>20160703</endDate>
+            <place>충무아트홀</place>
+            <realmName>연극</realmName>
+            <area>서울</area>
+            <thumbnail>http://www.cmah.or.kr/upload/BlogPerf/20160314/20160314_킬미나우-티저4절(370x520).jpg</thumbnail>
+            <gpsX>127.01485971849809</gpsX>
+            <gpsY>37.565930707020655</gpsY>
+        </perforList>
+        <perforList>
+            <seq>107262</seq>
+            <title>어린왕자 특별전 한·불수교 130주년 기념</title>
+            <startDate>20160502</startDate>
+            <endDate>20160918</endDate>
+            <place>경기도박물관</place>
+            <realmName>미술</realmName>
+            <area>경기</area>
+            <thumbnail>https://musenet.ggcf.kr/wp-content/uploads/sites/2/2016/04/0포스터main.jpg</thumbnail>
+            <gpsX>127.10853042069812</gpsX>
+            <gpsY>37.26782123563192</gpsY>
+        </perforList>
+        <perforList>
+            <seq>106721</seq>
+            <title>강영길 개인전_위 아 고도</title>
+            <startDate>20160502</startDate>
+            <endDate>20160509</endDate>
+            <place>한가람미술관</place>
+            <realmName>미술</realmName>
+            <area>서울</area>
+            <thumbnail>http://www.sacticket.co.kr/webhome/upload/20160415131526P.jpg</thumbnail>
+            <gpsX>127.01421586148933</gpsX>
+            <gpsY>37.48024251888776</gpsY>
+        </perforList>
+        <perforList>
+            <seq>107163</seq>
+            <title>이주용 사진관</title>
+            <startDate>20160503</startDate>
+            <endDate>20160815</endDate>
+            <place>서울시립미술관 북서울미술관</place>
+            <realmName>미술</realmName>
+            <area>서울</area>
+            <thumbnail>http://sema.seoul.go.kr/data/display/DP_479.jpg</thumbnail>
+            <gpsX>127.06711084341818</gpsX>
+            <gpsY>37.64011702188844</gpsY>
+        </perforList>
+        <perforList>
+            <seq>106986</seq>
+            <title>특별전 도산서원 '글 읽는 소리, 책 읽는 마음'</title>
+            <startDate>20160503</startDate>
+            <endDate>20160831</endDate>
+            <place>국립대구박물관</place>
+            <realmName>미술</realmName>
+            <area>서울</area>
+            <thumbnail>http://www.culture.go.kr/upload/rdf/show_201605131631977686.PNG</thumbnail>
+            <gpsX>128.6383565280258</gpsX>
+            <gpsY>35.84559223621597</gpsY>
+        </perforList>
+        <perforList>
+            <seq>106596</seq>
+            <title>리스크</title>
+            <startDate>20160503</startDate>
+            <endDate>20160510</endDate>
+            <place>유시어터</place>
+            <realmName>연극</realmName>
+            <area>서울</area>
+            <thumbnail>http://www.culture.go.kr/upload/rdf/rdf_201604141542887845.jpg</thumbnail>
+            <gpsX>127.04125920004546</gpsX>
+            <gpsY>37.52224467814845</gpsY>
+        </perforList>
+    </msgBody>
+</response>

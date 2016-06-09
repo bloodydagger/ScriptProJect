@@ -1,4 +1,5 @@
 # -*- coding: cp949 -*-
+#-*- coding: utf-8 -*- 
 from xml.dom.minidom import parse, parseString
 from xml.etree import ElementTree
 
@@ -33,70 +34,113 @@ def PrintDOMtoXML():
     if checkDocument():
         print(PIDoc.toxml())
 
-def PrintBookList(tags):
+def PrinttitleList(tags):
     global PIDoc
     if not checkDocument():
        return None
         
-    perforList = PIDoc.childNodes
-    PI = perforList[0].childNodes
-    for item in PI:
-        if item.nodeName == "book":
-            subitems = item.childNodes
-            for atom in subitems:
-               if atom.nodeName in tags:
-                   print("title=",atom.firstChild.nodeValue)
+    response = PIDoc.childNodes
+    msgBody = response[0].childNodes
+    for perforList in msgBody:
+        if perforList.nodeName == "msgBody":
+            PI =perforList.childNodes
+            for item in PI:
+                if item.nodeName == "perforList":# 엘리먼트를 중 perforlist인 것을 골라 냅니다.
+                    subitems = item.childNodes# book에 들어 있는 노드들을 가져옵니다.
+                    for atom in subitems:
+                        if atom.nodeName in tags:
+                            print("title=",atom.firstChild.nodeValue)# 타이틀 목록을 출력 합니다.
                 
-def AddBook(PIdata):
+def AddPI(PIdata):
      global PIDoc
      if not checkDocument() :
         return None
      
-     # book 엘리먼트 생성
-     newBook = PIDoc.createElement('perforList')
-     newBook.setAttribute('perforList', PIdata['perforList'])
+     # msg엘리먼트 생성
+     newmsg=PIDoc.createElement("msgBody")
+     #newmsg.setAttribute('msgBody', PIdata['msgBody'])
+     
+     
+     # period 엘리먼트 생성
+     newPI = PIDoc.createElement("perforList")
+     #newPI.setAttribute('perforList', PIdata['perforList'])
      # Title 엘리먼트 생성
-     titleEle = BooksDoc.createElement('title')
+     seqEle = PIDoc.createElement("seq")
+     seqEle.setAttribute("seq", PIdata["seq"])
+     titleEle = PIDoc.createElement("title")
+     titleEle.setAttribute("title", PIdata["title"])
      # 텍스트 노드 생성
-     titleNode = BooksDoc.createTextNode(PIdata['title'])
+     seqNode = PIDoc.createTextNode(PIdata["seq"])
+     titleNode = PIDoc.createTextNode(PIdata["title"])
+     
+     
+     
+     
      # 텍스트 노드를 Title 엘리먼트와 연결
      try:
          titleEle.appendChild(titleNode)
+         seqEle.appendChild(seqNode)
      except Exception:
-         print ("append child fail- please,check the parent element & node!!!")
+         print ("text append child fail- please,check the parent element & node!!!")
          return None
      else:
          titleEle.appendChild(titleNode)
+         seqEle.appendChild(seqNode)
 
-     # Title 엘리먼트를 Book 엘리먼트와 연결.
+     # Title,seq 엘리먼트를 period 엘리먼트와 연결.
      try:
-         newBook.appendChild(titleEle)
-         booklist = BooksDoc.firstChild
+         newPI.appendChild(titleEle)
+         newPI.appendChild(seqEle)
+         
      except Exception:
-         print ("append child fail- please,check the parent element & node!!!")
+         print ("title append child fail- please,check the parent element & node!!!")
          return None
      else:
-         if booklist != None:
-             booklist.appendChild(newBook)
+         newPI.appendChild(titleEle)
+         newPI.appendChild(seqEle)
 
-def SearchBookTitle(keyword):
-    global BooksDoc
+    #period 엘리먼트를 msgbody 엘리먼트와연결
+     try:
+         newmsg.appendChild(newPI)
+         
+     except Exception:
+         print ("msg append child fail- please,check the parent element & node!!!")
+         return None
+     else:
+         newmsg.appendChild(newPI)
+    #period 엘리먼트를 msgbody 엘리먼트와연결
+     try:
+         response = PIDoc.firstChild
+         
+     except Exception:
+         print ("response append child fail- please,check the parent element & node!!!")
+         return None
+     else:
+         if response != None:
+             response.appendChild(newmsg)
+
+
+
+def SearchPITitle(keyword):
+    global PIDoc
     retlist = []
     if not checkDocument():
         return None
         
     try:
-        tree = ElementTree.fromstring(str(BooksDoc.toxml()))
+        tree = ElementTree.fromstring(str(PIDoc.toxml()))
     except Exception:
         print ("Element Tree parsing Error : maybe the xml document is not corrected.")
         return None
     
     #get Book Element
-    bookElements = tree.getiterator("book")  # return list type
-    for item in bookElements:
+    #hPIElements = tree.getiterator("msgbody")  # return list type
+    PIElements = tree.getiterator("perforList")
+    for item in PIElements:
         strTitle = item.find("title")
+        strseq =item.find("seq")
         if (strTitle.text.find(keyword) >=0 ):
-            retlist.append((item.attrib["ISBN"], strTitle.text))
+            retlist.append((strseq.text, strTitle.text))#item.attrib["seq"]
     
     return retlist
 
